@@ -43,7 +43,7 @@ public class ProductAdapterListView extends ArrayAdapter<Product> {
             convertView = inflater.inflate(R.layout.product_list,parent,false);
         }
 
-        TextView tvName = (TextView) convertView.findViewById(R.id.productNameText);
+        TextView tvName = (TextView) convertView.findViewById(R.id.itemNameText);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
 
         Product p = dataProduct.get(position);

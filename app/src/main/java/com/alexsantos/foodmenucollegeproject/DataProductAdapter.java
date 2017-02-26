@@ -6,7 +6,9 @@ package com.alexsantos.foodmenucollegeproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import java.util.List;
 
 public class DataProductAdapter extends RecyclerView.Adapter<DataProductAdapter.ViewHolder> {
 
+    public static final String ITEM_ID_KEY ="item_id" ;
     private List<Product> mItems;
     private Context mContext;
 
@@ -32,8 +35,14 @@ public class DataProductAdapter extends RecyclerView.Adapter<DataProductAdapter.
 
     @Override
     public DataProductAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mContext);
+        boolean grid = settings.getBoolean(mContext.getString(R.string.pref_display_in_grid),false);
+
+        int layoutId = grid ? R.layout.grid_item : R.layout.product_list;
+
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View itemView = inflater.inflate(R.layout.product_list, parent, false);
+        View itemView = inflater.inflate(layoutId, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
         return viewHolder;
     }
@@ -52,25 +61,20 @@ public class DataProductAdapter extends RecyclerView.Adapter<DataProductAdapter.
             e.printStackTrace();
         }
 
-        holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
 
                 String itemId = item.getProductId();
                 Intent i = new Intent(mContext,DetailActivity.class);
+                i.putExtra(ITEM_ID_KEY,itemId);
+                mContext.startActivity(i);
 
-                return false;
             }
         });
 
-        holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
 
 
-                return false;
-            }
-        });
     }
 
     @Override
@@ -86,7 +90,7 @@ public class DataProductAdapter extends RecyclerView.Adapter<DataProductAdapter.
         public ViewHolder(View itemView) {
             super(itemView);
 
-            tvName = (TextView) itemView.findViewById(R.id.productNameText);
+            tvName = (TextView) itemView.findViewById(R.id.itemNameText);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
             mView = itemView;
         }

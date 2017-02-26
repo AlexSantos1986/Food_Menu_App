@@ -36,7 +36,7 @@ public class SampleDataProvider {
 
         addProduct(new  Product(null, "Garden Buffet", "Salads",
                 "Choose from our fresh local, organically grown ingredients to make a custom salad.",
-                4, 10, ""));
+                4, 10, "fresh_caesar_salad.jpg"));
 
         addProduct(new  Product(null, "Mini Cheeseburgers", "Starters",
                 "These mini cheeseburgers are served on a fresh baked pretzel bun with lettuce, tomato, avocado, and your choice of cheese.",

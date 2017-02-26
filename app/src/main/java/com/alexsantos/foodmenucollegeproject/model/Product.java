@@ -23,7 +23,7 @@ public class Product {
 
 
 
-    public Product(String productId, String productName, String description, String category, int sortposition, double price, String image) {
+    public Product(String productId, String productName, String category, String description, int sortposition, double price, String image) {
 
         if(productId == null){
 
