@@ -1,5 +1,7 @@
 package com.alexsantos.foodmenucollegeproject.model;
 
+import java.util.UUID;
+
 /**
  * Created by Alex on 24/02/2017.
  */
@@ -22,6 +24,12 @@ public class Product {
 
 
     public Product(String productId, String productName, String description, String category, int sortposition, double price, String image) {
+
+        if(productId == null){
+
+            productId = UUID.randomUUID().toString();
+        }
+
         this.productId = productId;
         this.productName = productName;
         this.description=description;

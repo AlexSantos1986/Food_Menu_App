@@ -2,9 +2,8 @@ package com.alexsantos.foodmenucollegeproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.alexsantos.foodmenucollegeproject.model.Product;
 import com.alexsantos.foodmenucollegeproject.sample.SampleDataProvider;
@@ -43,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
 //
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,productNames);
 
-        ProductAdapter adapter = new ProductAdapter(this,listItem);
+        DataProductAdapter adapter = new DataProductAdapter(this,listItem);
 
-        ListView listView = (ListView) findViewById(android.R.id.list);
-        listView.setAdapter(adapter);
+        RecyclerView view = (RecyclerView) findViewById(R.id.rvItems);
+        view.setAdapter(adapter);
 
     }
 }

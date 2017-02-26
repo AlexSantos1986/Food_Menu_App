@@ -24,11 +24,11 @@ public class SampleDataProvider {
 
         addProduct(new Product(null, "Quinoa Salmon Salad", "Salads",
                 "Our quinoa salad is served with quinoa, tomatoes, cucumber, scallions, and smoked salmon. Served with your choice of dressing.",
-                1, 12, "quinoa_salad.jpg"));
+                1, 12.10, "quinoa_salad.jpg"));
 
         addProduct(new Product(null, "Chef's Salad", "Salads",
                 "The chef’s salad has cucumber, tomatoes, red onions, mushrooms, hard-boiled eggs, cheese, and hot grilled chicken on a bed of romaine lettuce. Served with croutons and your choice of dressing.",
-                2, 9, "chef_salad.jpg"));
+                2, 9.20, "chef_salad.jpg"));
 
         addProduct(new Product(null, "House Salad", "Salads",
                 "Our house salad is made with romaine lettuce and spinach, topped with tomatoes, cucumbers, red onions and carrots. Served with a dressing of your choice.",
