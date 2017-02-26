@@ -1,6 +1,7 @@
 package com.alexsantos.foodmenucollegeproject;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import com.alexsantos.foodmenucollegeproject.model.Product;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,12 +22,12 @@ import java.util.Objects;
  * Created by Alex on 24/02/2017.
  */
 
-public class ProductAdapter extends ArrayAdapter<Product> {
+public class ProductAdapterListView extends ArrayAdapter<Product> {
 
     List<Product> dataProduct;
     LayoutInflater inflater;
 
-    public ProductAdapter(Context context, List<Product> objects) {
+    public ProductAdapterListView(Context context, List<Product> objects) {
         super(context, R.layout.product_list, objects);
 
         dataProduct = objects;
@@ -47,7 +50,27 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
 
         tvName.setText(p.getProductName());
-        imageView.setImageResource(R.drawable.swiss_roll);
+       //imageView.setImageResource(R.drawable.swiss_roll);
+
+        String image = p.getImage();
+
+        InputStream inputStream= null;
+        try {
+            inputStream = getContext().getAssets().open(image);
+            Drawable d = Drawable.createFromStream(inputStream,null);
+            imageView.setImageDrawable(d);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(inputStream != null){
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
 
 
         return convertView;
