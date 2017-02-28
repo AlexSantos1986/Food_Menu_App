@@ -22,21 +22,21 @@ public class SampleDataProvider {
         dataItem = new ArrayList<>();
         dataItemMap = new HashMap<>();
 
-        addProduct(new Product(null, "Quinoa Salmon Salad", "Salads",
+        addProduct(new Product(null, "Caesar Salad", "Salads",
                 "Our quinoa salad is served with quinoa, tomatoes, cucumber, scallions, and smoked salmon. Served with your choice of dressing.",
-                1, 12.10, "quinoa_salad.jpg"));
+                1, 12.10, "caesar_salad.jpg"));
 
-        addProduct(new Product(null, "Chef's Salad", "Salads",
+        addProduct(new Product(null, "Tea leaf Salad", "Salads",
                 "The chef’s salad has cucumber, tomatoes, red onions, mushrooms, hard-boiled eggs, cheese, and hot grilled chicken on a bed of romaine lettuce. Served with croutons and your choice of dressing.",
-                2, 9.20, "chef_salad.jpg"));
+                2, 9.20, "tea_leaf_salad.jpg"));
 
-        addProduct(new Product(null, "House Salad", "Salads",
+        addProduct(new Product(null, "Classic Spicy Caesar ", "Salads",
                 "Our house salad is made with romaine lettuce and spinach, topped with tomatoes, cucumbers, red onions and carrots. Served with a dressing of your choice.",
-                3, 7, "house_salad.jpg"));
+                3, 7, "fresh_caesar_salad.jpg"));
 
-        addProduct(new  Product(null, "Garden Buffet", "Salads",
+        addProduct(new  Product(null, "Spicy Papaya Salad", "Salads",
                 "Choose from our fresh local, organically grown ingredients to make a custom salad.",
-                4, 10, "fresh_caesar_salad.jpg"));
+                4, 10, "spicy_papaya_salad.jpg"));
 
         addProduct(new  Product(null, "Mini Cheeseburgers", "Starters",
                 "These mini cheeseburgers are served on a fresh baked pretzel bun with lettuce, tomato, avocado, and your choice of cheese.",
@@ -79,25 +79,25 @@ public class SampleDataProvider {
                 "This platter is perfect for sharing! Enjoy our spicy buffalo wings, traditional nachos, and cheese quesadillas served with freshly made guacamole dip.",
                 5, 16, "fiesta_platter.jpg"));
 
-        addProduct(new Product(null, "Crème Brûlée", "Desserts",
+        addProduct(new Product(null, "Napoleon_Strawberry", "Desserts",
                 "Elegantly crafted creamy vanilla custard with a caramelized crunchy layer on top. Served with seasonal fruit.",
-                1, 9, "creme_brulee.jpg"));
+                1, 9, "napoleon_strawberry.jpg"));
 
-        addProduct(new Product(null, "Cheesecake", "Desserts",
+        addProduct(new Product(null, "Red and Green Jelly", "Desserts",
                 "Our New York Style Cheesecake is rich, smooth, and creamy. Available in various flavors, and with seasonal fruit toppings.",
-                2, 9, "cheesecake.jpg"));
+                2, 9, "red_and_green_jelly.jpg"));
 
-        addProduct(new Product(null, "Chocolate Chip Brownie ", "Desserts",
+        addProduct(new Product(null, "Green tea dessert ", "Desserts",
                 "A warm chocolate chip brownie served with chocolate or vanilla ice cream and rich chocolate sauce.",
-                3, 6, "brownie.jpg"));
+                3, 6, "green_tea_dessert.jpg"));
 
         addProduct(new Product(null, "Swiss roll", "Desserts",
                 "Made with local granny smith apples to bring you the freshest classic apple pie available.",
                 4, 5, "swiss_roll.jpg"));
 
-        addProduct(new Product(null, "Mixed Berry Tart", "Desserts",
+        addProduct(new Product(null, "Ice Cream", "Desserts",
                 "Raspberries, blueberries, and strawberries on top of a creamy filling served in a crispy tart.",
-                5, 7, "berry_tart.jpg"));
+                5, 7, "ice_cream.jpg"));
 
         addProduct(new Product(null, "Tropical Blue Smoothie", "Drinks",
                 "This blueberry mint-based smoothie is refreshing and perfect for any celebration.",

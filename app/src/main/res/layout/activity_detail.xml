@@ -22,7 +22,9 @@
         android:layout_toStartOf="@+id/tvPrice"
         android:text="Item Name"
         android:textSize="24sp"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        tools:textStyle="italic"
+        android:textColor="@android:color/holo_red_dark" />
 
     <TextView
         android:id="@+id/tvPrice"
@@ -34,7 +36,8 @@
         android:text="€9"
         android:textAllCaps="true"
         android:textSize="24sp"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:textColor="@color/colorAccent" />
 
 
 
@@ -59,8 +62,10 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/itemImage"
         android:layout_marginTop="16dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:padding="2dp"
         android:text="Longer description"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:textStyle="normal|italic" />
 
 </RelativeLayout>
