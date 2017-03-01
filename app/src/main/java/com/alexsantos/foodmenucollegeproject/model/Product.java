@@ -1,5 +1,9 @@
 package com.alexsantos.foodmenucollegeproject.model;
 
+import android.content.ContentValues;
+
+import com.alexsantos.foodmenucollegeproject.database.ItemsTable;
+
 import java.util.UUID;
 
 /**
@@ -94,6 +98,21 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public ContentValues toValue(){
+
+        ContentValues values = new ContentValues(7);
+
+        values.put(ItemsTable.COLUMN_ID,productId);
+        values.put(ItemsTable.COLUMN_NAME,productName);
+        values.put(ItemsTable.COLUMN_DESCRIPTION,description);
+        values.put(ItemsTable.COLUMN_CATEGORY,category);
+        values.put(ItemsTable.COLUMN_POSITION,sortposition);
+        values.put(ItemsTable.COLUMN_PRICE,price);
+        values.put(ItemsTable.COLUMN_IMAGE,image);
+
+        return values;
     }
 
 

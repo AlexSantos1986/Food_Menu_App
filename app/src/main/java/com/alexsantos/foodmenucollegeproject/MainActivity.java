@@ -2,7 +2,11 @@ package com.alexsantos.foodmenucollegeproject;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,9 +14,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.alexsantos.foodmenucollegeproject.database.DataSource;
+import com.alexsantos.foodmenucollegeproject.database.DbHelper;
 import com.alexsantos.foodmenucollegeproject.model.Product;
 import com.alexsantos.foodmenucollegeproject.sample.SampleDataProvider;
 
@@ -25,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
     private final static int SIGNIN_REQUEST=1001;
     public static final String MY_GLOBAL_PREFS = "my_global_prefs";
-
-    //    TextView display;
     List<Product> listItem = SampleDataProvider.dataItem;
-    List<String> productNames= new ArrayList<>();
+    DataSource mDataSource;
+    String [] mCategories;
+    ListView mDrawerList;
+    DrawerLayout mDrawerLayout;
+    List<Product> listFromDatabase;
+    DataProductAdapter adapter;
+    RecyclerView  recyclerView;
 
 
     @Override
@@ -36,26 +49,60 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Collections.sort(listItem, new Comparator<Product>() {
+        //code to manage navigation drawer
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mCategories = getResources().getStringArray(R.array.categories);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        recyclerView = (RecyclerView) findViewById(R.id.rvItems);
+        mDrawerList.setAdapter(new ArrayAdapter<>(this,R.layout.drawer_list_item,mCategories));
+
+
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public int compare(Product o1, Product o2) {
-                return o1.getProductName().compareTo(o2.getProductName());
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String category = mCategories[position];
+                Toast.makeText(MainActivity.this,"You chose"+category,Toast.LENGTH_SHORT).show();
+                mDrawerLayout.closeDrawer(mDrawerList);
+                displayDataitems(category);
             }
         });
 
-        DataProductAdapter adapter = new DataProductAdapter(this,listItem);
+
+        mDataSource  = new DataSource(this);
+        mDataSource.open();
+        mDataSource.seedDatabase(listItem);
+
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         boolean grid = settings.getBoolean(getString(R.string.pref_display_in_grid),false);
 
-        RecyclerView  recyclerView = (RecyclerView) findViewById(R.id.rvItems);
         if(grid){
 
             recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         }
 
-        recyclerView.setAdapter(adapter);
+        displayDataitems(null);
 
+    }
+
+    private void displayDataitems(String category){
+       listFromDatabase = mDataSource.getAllProduct(category);
+        adapter = new DataProductAdapter(this,listFromDatabase);
+        recyclerView.setAdapter(adapter);
+    }
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mDataSource.close();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mDataSource.open();
     }
 
     @Override
@@ -79,6 +126,14 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Intent settingIntent = new Intent(this, PreferenceActivity.class);
                 startActivity(settingIntent);
+                return true;
+
+            case R.id.action_display_all_Products:
+                // display all product
+                displayDataitems(null);
+
+            case R.id.action_choose_category:
+                mDrawerLayout.openDrawer(mDrawerList);
                 return true;
 
         }

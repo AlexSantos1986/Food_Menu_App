@@ -14,6 +14,16 @@
         android:showAsAction="ifRoom"
         tools:ignore="AppCompatResource" />
 
+    <item android:id="@+id/action_display_all_Products"
+        android:title="Display all"
+        android:showAsAction="ifRoom"
+        tools:ignore="AppCompatResource" />
+
+    <item android:id="@+id/action_choose_category"
+        android:title="Choose a category"
+        android:showAsAction="ifRoom"
+        tools:ignore="AppCompatResource" />
+
 
 
 </menu>
