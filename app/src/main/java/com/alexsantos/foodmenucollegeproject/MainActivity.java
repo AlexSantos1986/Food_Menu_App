@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 String category = mCategories[position];
                 Toast.makeText(MainActivity.this,"You chose"+category,Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);
-                displayDataitems(category);
+                displayItems(category);
             }
         });
 
@@ -81,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         }
 
-        displayDataitems(null);
+        displayItems(null);
 
     }
 
-    private void displayDataitems(String category){
+    private void displayItems(String category){
        listFromDatabase = mDataSource.getAllProduct(category);
         adapter = new DataProductAdapter(this,listFromDatabase);
         recyclerView.setAdapter(adapter);
@@ -130,7 +130,9 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.action_display_all_Products:
                 // display all product
-                displayDataitems(null);
+                displayItems(null);
+                return true;
+
 
             case R.id.action_choose_category:
                 mDrawerLayout.openDrawer(mDrawerList);

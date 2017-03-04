@@ -11,6 +11,7 @@
 
     <item android:id="@+id/action_settings"
         android:title="Settings"
+        android:icon="@drawable/swiss_roll"
         android:showAsAction="ifRoom"
         tools:ignore="AppCompatResource" />
 

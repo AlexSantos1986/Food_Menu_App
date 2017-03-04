@@ -38,23 +38,23 @@ public class SampleDataProvider {
                 "Choose from our fresh local, organically grown ingredients to make a custom salad.",
                 4, 10, "spicy_papaya_salad.jpg"));
 
-        addProduct(new  Product(null, "Mini Cheeseburgers", "Starters",
+        addProduct(new  Product(null, "Mini Cheeseburgers", "Starter",
                 "These mini cheeseburgers are served on a fresh baked pretzel bun with lettuce, tomato, avocado, and your choice of cheese.",
                 1, 8, "mini_cheeseburgers.jpg"));
 
-        addProduct(new Product(null, "Panko Stuffed Mushrooms", "Starters",
+        addProduct(new Product(null, "Panko Stuffed Mushrooms", "Starter",
                 "Large mushroom caps are filled a savory cream cheese, bacon and panko breadcrumb stuffing, topped with cheddar cheese.",
                 2, 7, "stuffed_mushrooms.jpg"));
 
-        addProduct(new Product(null, "French Onion Soup", "Starters",
+        addProduct(new Product(null, "French Onion Soup", "Starter",
                 "Caramelized onions slow cooked in a savory broth, topped with sourdough and a provolone cheese blend. Served with sourdough bread.",
                 3, 7, "french_onion_soup.jpg"));
 
-        addProduct(new Product(null, "Artichokes with Garlic Aeoli", "Starters",
+        addProduct(new Product(null, "Artichokes with Garlic Aeoli", "Starter",
                 "Our artichokes are brushed with an olive oil and rosemary blend and then broiled to perfection. Served with a side of creamy garlic aioli.",
                 4, 9, "artichokes.jpg"));
 
-        addProduct(new Product(null, "Parmesan Deviled Eggs", "Starters",
+        addProduct(new Product(null, "Parmesan Deviled Eggs", "Starter",
                 "SOME SAY OUR EGGS ARE DEVILISHLY GOOD. I HAVE TO AGREE.\n" +
                         "These delectable little bites are made with organic eggs, fresh Parmesan, and chopped pine nuts.\"",
                 5, 8, "deviled_eggs.jpg"));

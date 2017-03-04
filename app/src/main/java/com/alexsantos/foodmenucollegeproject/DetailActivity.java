@@ -5,6 +5,7 @@ package com.alexsantos.foodmenucollegeproject;
         import android.support.v7.app.AppCompatActivity;
         import android.widget.ImageView;
         import android.widget.TextView;
+        import android.widget.Toast;
 
         import com.alexsantos.foodmenucollegeproject.model.Product;
         import com.alexsantos.foodmenucollegeproject.sample.SampleDataProvider;
@@ -27,8 +28,11 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         String itemId = getIntent().getExtras().getString(DataProductAdapter.ITEM_ID_KEY);
-
+        Toast.makeText(getApplicationContext(),"Item ID: "+itemId, Toast.LENGTH_LONG).show();
         Product item = SampleDataProvider.dataItemMap.get(itemId);
+        Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_LONG).show();
+
+        /*Product item = SampleDataProvider.dataItemMap.get(itemId);
 
         tvName = (TextView) findViewById(R.id.tvItemName);
         tvPrice = (TextView) findViewById(R.id.tvPrice);
@@ -57,6 +61,6 @@ public class DetailActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        }
+        }*/
     }
 }

@@ -11,7 +11,7 @@ import android.os.Build;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    static final int VERSION= 5;
+    static final int VERSION=2;
     static final String FILE_NAME="foodMenu.db";
 
 

@@ -29,8 +29,8 @@ public class DataProductAdapter extends RecyclerView.Adapter<DataProductAdapter.
     private Context mContext;
 
     public DataProductAdapter(Context context, List<Product> items) {
-        this.mContext = context;
-        this.mItems = items;
+            this.mContext = context;
+            this.mItems = items;
     }
 
     @Override
