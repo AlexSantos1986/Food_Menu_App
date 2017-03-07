@@ -1,6 +1,8 @@
 package com.alexsantos.foodmenucollegeproject.model;
 
 import android.content.ContentValues;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.alexsantos.foodmenucollegeproject.database.ItemsTable;
 
@@ -10,7 +12,7 @@ import java.util.UUID;
  * Created by Alex on 24/02/2017.
  */
 
-public class Product {
+public class Product implements Parcelable {
 
 
     private String productId;
@@ -25,8 +27,6 @@ public class Product {
 
     }
 
-
-
     public Product(String productId, String productName, String category, String description, int sortposition, double price, String image) {
 
         if(productId == null){
@@ -37,7 +37,6 @@ public class Product {
         this.productId = productId;
         this.productName = productName;
         this.description=description;
-
         this.category = category;
         this.sortposition = sortposition;
         this.price = price;
@@ -116,4 +115,41 @@ public class Product {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.productId);
+        dest.writeString(this.productName);
+        dest.writeString(this.description);
+        dest.writeString(this.category);
+        dest.writeInt(this.sortposition);
+        dest.writeDouble(this.price);
+        dest.writeString(this.image);
+    }
+
+    protected Product(Parcel in) {
+        this.productId = in.readString();
+        this.productName = in.readString();
+        this.description = in.readString();
+        this.category = in.readString();
+        this.sortposition = in.readInt();
+        this.price = in.readDouble();
+        this.image = in.readString();
+    }
+
+    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel source) {
+            return new Product(source);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 }

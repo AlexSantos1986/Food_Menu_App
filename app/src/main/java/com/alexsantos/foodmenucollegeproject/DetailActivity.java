@@ -27,12 +27,11 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        String itemId = getIntent().getExtras().getString(DataProductAdapter.ITEM_ID_KEY);
-        Toast.makeText(getApplicationContext(),"Item ID: "+itemId, Toast.LENGTH_LONG).show();
-        Product item = SampleDataProvider.dataItemMap.get(itemId);
-        Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_LONG).show();
 
-        /*Product item = SampleDataProvider.dataItemMap.get(itemId);
+        Product item = getIntent().getExtras().getParcelable(DataProductAdapter.ITEM_KEY);
+        if(item == null){
+            throw new AssertionError("Null item received");
+        }
 
         tvName = (TextView) findViewById(R.id.tvItemName);
         tvPrice = (TextView) findViewById(R.id.tvPrice);
@@ -61,6 +60,6 @@ public class DetailActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        }*/
+        }
     }
 }

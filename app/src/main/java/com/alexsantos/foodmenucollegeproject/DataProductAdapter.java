@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DataProductAdapter extends RecyclerView.Adapter<DataProductAdapter.ViewHolder> {
 
-    public static final String ITEM_ID_KEY ="item_id" ;
+    public static final String ITEM_KEY = "item_key";
     private List<Product> mItems;
     private Context mContext;
 
@@ -65,9 +65,9 @@ public class DataProductAdapter extends RecyclerView.Adapter<DataProductAdapter.
             @Override
             public void onClick(View v) {
 
-                String itemId = item.getProductId();
+               // String itemId = item.getProductId();
                 Intent i = new Intent(mContext,DetailActivity.class);
-                i.putExtra(ITEM_ID_KEY,itemId);
+                i.putExtra(ITEM_KEY,item);
                 mContext.startActivity(i);
 
             }

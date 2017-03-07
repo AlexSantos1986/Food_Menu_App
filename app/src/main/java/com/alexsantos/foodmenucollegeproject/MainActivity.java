@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,7 +33,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final static int SIGNIN_REQUEST=1001;
+
     public static final String MY_GLOBAL_PREFS = "my_global_prefs";
     List<Product> listItem = SampleDataProvider.dataItem;
     DataSource mDataSource;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //code to manage navigation drawer
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mCategories = getResources().getStringArray(R.array.categories);
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String category = mCategories[position];
-                Toast.makeText(MainActivity.this,"You chose"+category,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Choice "+category+" selected",Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);
                 displayItems(category);
             }
@@ -118,11 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.action_signin:
-                Intent i = new Intent(this,SigninActivity.class);
-                startActivityForResult(i,SIGNIN_REQUEST);
-                return true;
-
             case R.id.action_settings:
                 Intent settingIntent = new Intent(this, PreferenceActivity.class);
                 startActivity(settingIntent);
@@ -142,20 +139,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode ==  RESULT_OK && requestCode == SIGNIN_REQUEST){
-            String email= data.getStringExtra(SigninActivity.EMAIL_KEY);
-            Toast.makeText(this,"You signed in as "+email,Toast.LENGTH_SHORT).show();
-
-
-            SharedPreferences.Editor editor = getSharedPreferences(MY_GLOBAL_PREFS,MODE_PRIVATE).edit();
-            editor.putString(SigninActivity.EMAIL_KEY,email);
-            editor.apply();
-
-        }
-
-    }
 }

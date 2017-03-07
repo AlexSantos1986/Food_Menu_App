@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Restaurant Menu</string>
+    <string name="app_name">Food+ Menu</string>
     <string name="title_activity_signin">Sign in</string>
     <string name="title_activity_settings">Settings</string>
 
